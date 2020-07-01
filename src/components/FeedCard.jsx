@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from '../scss/card.module.scss';
+import LinearLoader from './LinearLoader';
 
-export default function Card({repo}) {
+export default function Card({ repo, isSaved, changeSaveOption }) {
+  const [saving, setSaving] = useState(false);
   return (
     <div>
-      <div className={styles['big-box']}>
+      <div className={isSaved ? styles.savedRepo : styles['big-box']}>
         <div className={styles.flex}>
           <div className={styles['left-col']}>
             <img src={repo.owner.avatar_url} className={styles.repoOwnerImage} alt="Organisation Logo" />
@@ -56,9 +58,26 @@ export default function Card({repo}) {
                 </div>
               </div>
             </div>
-            <div className={styles['save-syntax']}>
-              <p>Save</p>
-            </div>
+            {saving === true && <LinearLoader />}
+            {saving === false &&
+              <button
+                type="button"
+                className={isSaved === true ? styles.savedButton : styles.unSavedButton}
+                onClick={() => {
+                  setSaving(true);
+                  if (isSaved === true) {
+                    changeSaveOption('remove').then(() => {
+                      setSaving(false);
+                    });
+                  }
+                  else
+                    changeSaveOption('add').then(() => {
+                      setSaving(false);
+                    });
+                }}>
+                {isSaved ? 'Saved' : 'Save'}
+              </button>
+            }
           </div>
         </div>
       </div>
@@ -80,5 +99,7 @@ Card.propTypes = {
       name: PropTypes.string,
       avatar_url: PropTypes.string
     }),
-  }).isRequired
+  }).isRequired,
+  isSaved: PropTypes.bool.isRequired,
+  changeSaveOption: PropTypes.func.isRequired
 };

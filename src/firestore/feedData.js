@@ -1,4 +1,4 @@
-import {db} from '../firebase';
+import firebase,{db} from '../firebase';
 // get repositories without any filter
 export async function getRepos(nodeId, searchRepo, filterLanguage, sortMethod, sortOrder) {
 
@@ -24,4 +24,24 @@ export async function getLanguageList() {
   return db.collection('languages').doc('languages').get().then(res => {
     return res.data().language.sort();
   });
+}
+
+export async function getSavedRepoList(user) {
+  return db.collection('users').doc(user).get().then(res => {
+    const result = res.data().followingRepositories;
+    if (result === undefined) return [];
+    return result;
+  });
+}
+
+export async function setSavedRepoList(user, method, value) {
+  if (method === 'remove') {
+    return db.collection('users').doc(user).update({
+      followingRepositories: firebase.firestore.FieldValue.arrayRemove(value)
+    });
+  }
+  return db.collection('users').doc(user).update({
+      followingRepositories: firebase.firestore.FieldValue.arrayUnion(value)
+    });
+  
 }

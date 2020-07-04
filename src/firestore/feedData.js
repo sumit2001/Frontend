@@ -45,3 +45,22 @@ export async function setSavedRepoList(user, method, value) {
     });
   
 }
+
+export async function getSavedRepoData(user, index) {
+  const list = await getSavedRepoList(user);
+  list.sort();
+  const data = [];
+  const listCalled = [];
+  let count = 0;
+  for (let i = index; i < list.length && count < 10; i+=1,count+=1) {
+    listCalled.push(list[i]);  
+  }
+  if (listCalled.length === 0)
+    return data;
+  await db.collection('repositories').where('node_id','in',listCalled).get().then(res => {
+    res.docs.forEach(doc => {
+      data.push(doc.data());
+    })  
+  });
+  return data;
+}

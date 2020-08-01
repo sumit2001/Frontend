@@ -17,7 +17,7 @@ export default function AboutUs() {
         </div>
         <div className={styles['about-right-col']}>
           <h1>
-            About <u> Open Source Code </u>
+            About <u> OSC</u>
           </h1>
 
           <p>

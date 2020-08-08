@@ -24,7 +24,7 @@ export default function WelcomeComponent({ setLoading }) {
     const newUser = await FirebaseAuth.GoogleSignIn();
     if (newUser.user === undefined) {
       await FirebaseAuth.logout();
-      Router.replace('/feed');
+      Router.replace('/');
       toast.error('An error occurred while logging in.');
     } else if (newUser.code === undefined) {
       changeUser(
@@ -57,7 +57,7 @@ export default function WelcomeComponent({ setLoading }) {
     const newUser = await FirebaseAuth.GithubSignIn();
     if (newUser.user === undefined) {
       await FirebaseAuth.logout();
-      Router.replace('/feed');
+      Router.replace('/');
       toast.error('An error occurred while logging in.');
     } else if (newUser.code === undefined) {
       changeUser(

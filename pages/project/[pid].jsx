@@ -53,45 +53,53 @@ const project = () => {
       <Header />
       <div className={styles.projectProfile}>
         <div className={styles['card-left-column']}>
-          <h1>{repoData.full_name && repoData.full_name.split('/')[1]}</h1>
+          <h1>
+            {repoData && repoData.full_name && repoData.full_name.split('/')[1]}
+          </h1>
           <div className={styles['card-left-info']}>
             <div className={styles['org-languages']}>
               <p>
                 By{' '}
                 <em style={{ color: 'green' }}>
-                  {repoData.full_name && repoData.full_name.split('/')[0]}
+                  {repoData &&
+                    repoData.full_name &&
+                    repoData.full_name.split('/')[0]}
                 </em>{' '}
                 | Updated:{' '}
-                {repoData.updated_at && repoData.updated_at.slice(0, 10)}
+                {repoData &&
+                  repoData.updated_at &&
+                  repoData.updated_at.slice(0, 10)}
               </p>
               <span className={styles['org-lang-1']}>
-                {repoData.language && repoData.language}
+                {repoData && repoData.language && repoData.language}
               </span>
             </div>
-            <p>{repoData.description && repoData.description}</p>
+            <p>{repoData && repoData.description && repoData.description}</p>
             <div className={styles['git-dev-icons']}>
               <a
-                href={repoData.html_url && repoData.html_url}
+                href={repoData && repoData.html_url && repoData.html_url}
                 target="_blank"
                 rel="noreferrer">
                 <button
                   type="button"
                   className={styles['github-icon']}
-                  disabled={!repoData.html_url}>
+                  disabled={repoData === null || !repoData.html_url}>
                   <img src="/icons/github-icon.png" alt="Github-icon" />
                   <p>Github</p>
                 </button>
               </a>
               <a
                 href={
-                  repoData.html_url && `https://gitpod.io/#${repoData.html_url}`
+                  repoData &&
+                  repoData.html_url &&
+                  `https://gitpod.io/#${repoData.html_url}`
                 }
                 target="_blank"
                 rel="noreferrer">
                 <button
                   type="button"
                   className={styles['gitpod-icon']}
-                  disabled={!repoData.html_url}>
+                  disabled={repoData === null || !repoData.html_url}>
                   <img src="/icons/gitPod-icon.png" alt="Gitpod-icon" />
                   <p>Gitpod</p>
                 </button>
@@ -105,7 +113,9 @@ const project = () => {
             <p>Stars</p>
             <div className={styles['total-forks-and-stars']}>
               <p>
-                {repoData.stargazers_count ? repoData.stargazers_count : '0'}
+                {repoData && repoData.stargazers_count
+                  ? repoData.stargazers_count
+                  : '0'}
               </p>
             </div>
           </div>
@@ -113,7 +123,7 @@ const project = () => {
             <img src="/icons/fork-icon.png" alt="Fork" />
             <p>Forks</p>
             <div className={styles['total-forks-and-stars']}>
-              <p>{repoData.forks ? repoData.forks : '0'}</p>
+              <p>{repoData && repoData.forks ? repoData.forks : '0'}</p>
             </div>
           </div>
         </div>

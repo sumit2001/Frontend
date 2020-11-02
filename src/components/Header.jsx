@@ -38,7 +38,7 @@ export default function Header() {
         <Link href={User ? '/feed' : '/'}>
           <img
             className={styles['header-logo']}
-            src="/logo/web_logo.png"
+            src="/logo/logo.png"
             alt=""
           />
         </Link>

@@ -18,48 +18,48 @@ export default function Footer() {
         <div className={styles['footer-content']}>
           <div className={styles.badges}>
             {/* Dev.to */}
-            <a href="https://dev.to/_opensourcecode">
+            <a href="https://dev.to/">
               <img src="/SVG/dev_to.svg" alt="Dev.to"/>
               Dev.to
             </a>
             {/* Discord */}
-            <a href="https://discord.gg/HYPt5RX">
+            <a href="https://discord.com/">
               <img src="/SVG/footer-discord.svg" alt="Discord"/>
               Discord
             </a>
             {/* Twitter */}
-            <a href="https://twitter.com/_opensourcecode">
+            <a href="https://twitter.com/">
               <img src="/SVG/footer-twitter.svg" alt="Twitter"/>
               Twitter
             </a>
             {/* Github */}
-            <a href="https://github.com/OpenSouceCode">
+            <a href="https://github.com/CodeTrophs">
               <img src="/SVG/footer-github.svg" alt="Github"/>
               Github
             </a>
             {/* LinkedIn */}
-            <a href="https://www.linkedin.com/company/opensourcecode">
+            <a href="https://www.linkedin.com/company/">
               <img src="/SVG/footer-linkedin.svg" alt="LinkedIn"/>
               LinkedIn
             </a>
             {/* Slack */}
-            <a href="https://join.slack.com/t/opensourcecode/shared_invite/zt-f0frpe9g-8fGLNGPA6HUQR~XuCoAJmg">
+            <a href="https://join.slack.com/t/codetrophs/shared_invite/zt-igl6zdvk-PgKV6thVwnHepc33I1qTPw">
               <img src="/SVG/footer-slack.svg" alt="Slack"/>
               Slack
             </a>
 
-            <a href="https://github.com/OpenSouceCode/Frontend/tree/master/src/components">
+            <a href="https://github.com/CodeTrophs">
               <img src="/SVG/pencil.svg" alt="pencil"/>
               Edit this page
             </a>
-            <a href="https://github.com/OpenSouceCode/Frontend">
+            <a href="https://github.com/CodeTrophs">
               <img src="/SVG/code.svg" alt="</>"/>
               View Source Code
             </a>
           </div>
         </div>
         <div className={styles['partner-logo']}>
-          <img src="SVG/footer-partner-logo.svg" alt="Powered by InCampus"/>
+          <img src="/logo/logo.png" alt="Powered by CodeTrophs"/>
         </div>
       </footer>
     </div>
